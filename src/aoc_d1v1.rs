@@ -3,7 +3,7 @@ pub(crate) fn solve(input: impl Iterator<Item = String>) {
     let result = input
         .split(|line| line.is_empty())
         .map(|elf| {
-            elf.into_iter()
+            elf.iter()
                 .map(|i| i.parse::<i32>().unwrap())
                 .sum::<i32>()
         })

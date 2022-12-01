@@ -16,6 +16,5 @@ where
 {
     let file = File::open(filename).expect("Input not found");
     let lines = BufReader::new(file).lines();
-    let text = lines.map(|x| x.unwrap());
-    text
+    lines.map(|x| x.unwrap())
 }
