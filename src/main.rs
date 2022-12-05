@@ -3,11 +3,11 @@ use std::{
     io::{BufRead, BufReader},
     path::Path,
 };
-mod aoc_d1v2;
+mod aoc_d5v1;
 
 fn main() {
-    let lines = read_lines(Path::new("input\\1.txt"));
-    aoc_d1v2::solve(lines);
+    let lines = read_lines(Path::new("input\\5.txt"));
+    aoc_d5v1::solve(lines);
 }
 
 fn read_lines<P>(filename: P) -> impl Iterator<Item = String>
