@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 pub(crate) fn solve(input: impl Iterator<Item = String>) {
     let mut result = 0_u32;
-    for line in input{
+    for line in input {
         let half_len = line.len() / 2;
         let first: HashSet<char> = line[..half_len].chars().collect();
         let last: HashSet<char> = line[half_len..].chars().collect();
