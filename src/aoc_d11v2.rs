@@ -1,7 +1,7 @@
 struct Monkey {
-    items: Vec<i32>,
-    operation: fn(i32) -> i32,
-    test: fn(i32) -> bool,
+    items: Vec<u64>,
+    operation: fn(u64) -> u64,
+    test: fn(u64) -> bool,
     true_index: usize,
     false_index: usize,
 }
@@ -10,15 +10,16 @@ pub(crate) fn solve(_input: impl Iterator<Item = String>) {
     let mut monkeys = fill_input();
     let mut operations = vec![0; 8];
 
-    for _step in 0..20 {
+    let magic = 11 * 17 * 5 * 13 * 19 * 2 * 3 * 7;
+
+    for _step in 0..10000 {
         for monkey_index in 0..monkeys.len() {
             let monkeys = &mut monkeys;
             for _ in 0..monkeys[monkey_index].items.len() {
                 let curr_monkey = &mut monkeys[monkey_index];
                 let item = curr_monkey.items.pop().unwrap();
                 operations[monkey_index] += 1;
-                let item = (curr_monkey.operation)(item);
-                let item = item / 3;
+                let item = (curr_monkey.operation)(item) % magic;
                 let dest_index = if (curr_monkey.test)(item) {
                     curr_monkey.true_index
                 } else {
@@ -29,6 +30,7 @@ pub(crate) fn solve(_input: impl Iterator<Item = String>) {
         }
     }
 
+    operations.sort();
     println!("{:?}", operations);
 }
 
